@@ -1,0 +1,3 @@
+-Djrebel
+-Drepo.bootstrap=true
+-Dcargo.jvm.args='-Dwicket.configuration=development'

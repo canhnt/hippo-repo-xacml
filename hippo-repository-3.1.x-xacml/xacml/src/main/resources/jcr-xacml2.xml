@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PolicySet xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os"
+  PolicySetId="RPSlist" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
+  <Target/>
+  <Policy PolicyId="RPSlist0"
+          RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable" Version="1.0">
+    <Target/>
+
+    <Rule Effect="Deny" RuleId="documents-deny">
+      <Target>
+        <Resources>
+          <Resource>
+            <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+              <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">/content/documents</AttributeValue>
+              <ResourceAttributeDesignator AttributeId="jcr:path" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+            </ResourceMatch>
+          </Resource>
+        </Resources>
+      </Target>
+    </Rule>
+
+    <Rule Effect="Permit" RuleId="mandatory-subject">
+      <Target>
+        <Subjects>
+          <Subject>
+            <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+              <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">alice</AttributeValue>
+              <SubjectAttributeDesignator AttributeId="subject-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+            </SubjectMatch>
+          </Subject>
+        </Subjects>
+      </Target>
+    </Rule>
+
+    <Rule Effect="Deny" RuleId="default">
+      <Target/>
+    </Rule>
+  </Policy>
+
+</PolicySet>
